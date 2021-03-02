@@ -58,7 +58,7 @@ namespace Linx.Dev.Gabriel.Controllers
 
             else
             {
-                context.Cities.Remove(city);
+                context.Cities.Add(city);
                 await context.SaveChangesAsync();
                 return city;
             }
