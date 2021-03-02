@@ -1,7 +1,6 @@
 ﻿using Linx.Dev.Gabriel.Data;
 using Linx.Dev.Gabriel.Enums;
 using Linx.Dev.Gabriel.Model;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,7 +12,6 @@ namespace Linx.Dev.Gabriel.Controllers
 {
     [ApiController]
     [Route("v1/city")]
-
     public class CompanyController : ControllerBase
     {
         [HttpGet]
@@ -24,7 +22,6 @@ namespace Linx.Dev.Gabriel.Controllers
             return city;
         }
 
-
         [HttpGet]
         [Route("getByUf/{uf}")]
         public async Task<ActionResult<List<City>>> GetbyUf([FromServices] DataContext context, UF uf)
@@ -33,7 +30,6 @@ namespace Linx.Dev.Gabriel.Controllers
                 (x => x.UF == uf).AsNoTracking().ToListAsync();
             return city;
         }
-
 
         [HttpGet]
         [Route("getByRegion/{region}")]
@@ -54,11 +50,10 @@ namespace Linx.Dev.Gabriel.Controllers
 
         [HttpPost]
         [Route("")]
-
         public async Task<ActionResult<City>> Post([FromServices] DataContext context, City model)
         {
             var city = context.Cities.FirstOrDefault(x => x.IBGE == model.IBGE);
-            if (model.Name == null && model.UF == city.UF )
+            if (model.Name == null && model.UF == city.UF)
                 return BadRequest(new { message = "Esse cadastro já existe!" });
 
             else
@@ -71,7 +66,6 @@ namespace Linx.Dev.Gabriel.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-
         public async Task<ActionResult<City>> Delete([FromServices] DataContext context,
             int id)
         {
@@ -94,7 +88,6 @@ namespace Linx.Dev.Gabriel.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
-
         public async Task<ActionResult<City>> Put(
             [FromServices] DataContext context,
             int id,

@@ -34,7 +34,6 @@ namespace Linx.Dev.Gabriel
                 app.UseDeveloperExceptionPage();
             }
 
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
