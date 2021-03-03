@@ -1,6 +1,7 @@
 ﻿using Linx.Dev.Gabriel.Data;
 using Linx.Dev.Gabriel.Enums;
 using Linx.Dev.Gabriel.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Linx.Dev.Gabriel.Controllers
-{
+{   
+    [EnableCors]
     [ApiController]
     [Route("v1/city")]
     public class CompanyController : ControllerBase
